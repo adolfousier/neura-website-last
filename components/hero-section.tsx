@@ -10,6 +10,7 @@ export function HeroSection() {
 
   return (
     <section className="w-full max-w-[1400px] mx-auto py-12 md:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="pt-24"> 
       <div className="flex flex-col gap-8 lg:flex-row">
         <div className="flex flex-col items-center justify-center space-y-8 text-center lg:items-start lg:text-left lg:w-1/2 px-4 sm:px-6 lg:px-0">
           <div className="space-y-4 max-w-3xl">
@@ -46,6 +47,7 @@ export function HeroSection() {
             <ApplicationsTable />
           </div>
         </div>
+      </div>
       </div>
     </section>
   )
