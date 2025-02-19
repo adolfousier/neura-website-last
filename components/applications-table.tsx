@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { TableHeader } from "@/components/ui/table"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
@@ -155,28 +155,56 @@ const applications: Application[] = [
 
 export function ApplicationsTable() {
   const { t } = useTranslation()
-  const [previewData, setPreviewData] = useState<PreviewData>({
-    visible: false,
-    url: "",
-    name: "",
-    position: { x: 0, y: 0 }
-  })
+  const [hoveredApp, setHoveredApp] = useState<Application | null>(null)
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 })
+  const previewTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const previewRef = useRef<HTMLDivElement>(null)
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLTableRowElement>, app: Application) => {
-    const rect = e.currentTarget.getBoundingClientRect()
+  useEffect(() => {
+    return () => {
+      if (previewTimeoutRef.current) {
+        clearTimeout(previewTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  const handleRowMouseEnter = (e: React.MouseEvent<HTMLTableRowElement>, app: Application) => {
+    if (previewTimeoutRef.current) {
+      clearTimeout(previewTimeoutRef.current)
+    }
+
+    const row = e.currentTarget
+    const rect = row.getBoundingClientRect()
+    
     const x = rect.left + window.scrollX
     const y = rect.top + window.scrollY
 
-    setPreviewData({
-      visible: true,
-      url: app.url,
-      name: app.name,
-      position: { x, y }
-    })
+    previewTimeoutRef.current = setTimeout(() => {
+      setPreviewPosition({ x, y })
+      setHoveredApp(app)
+    }, 100)
   }
 
-  const handleMouseLeave = () => {
-    setPreviewData((prev: PreviewData) => ({ ...prev, visible: false }))
+  const handleRowMouseLeave = (e: React.MouseEvent<HTMLTableRowElement>) => {
+    if (previewTimeoutRef.current) {
+      clearTimeout(previewTimeoutRef.current)
+    }
+
+    const relatedTarget = e.relatedTarget as Node | null
+    if (previewRef.current && !previewRef.current.contains(relatedTarget)) {
+      setHoveredApp(null)
+    }
+  }
+
+  const handlePreviewMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const relatedTarget = e.relatedTarget as Element | null
+    if (!relatedTarget?.closest('tr')) {
+      setHoveredApp(null)
+    }
+  }
+
+  const handleRowClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -195,49 +223,26 @@ export function ApplicationsTable() {
               {applications.map((app, index) => (
                 <TableRow
                   key={index}
-                  onMouseEnter={(e) => handleMouseEnter(e, app)}
-                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleRowClick(app.url)}
                   className={`hover:bg-muted/50 transition-colors cursor-pointer ${
                     index % 2 === 0 ? "bg-muted/10" : ""
                   }`}
+                  onMouseEnter={(e) => handleRowMouseEnter(e, app)}
+                  onMouseLeave={handleRowMouseLeave}
                 >
                   <TableCell className="font-medium p-3">
-                    <a 
-                      href={app.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:text-primary transition-colors block w-full h-full"
-                      onClick={(e) => e.stopPropagation()}
-                    >
+                    <span className="text-primary hover:text-primary/80 hover:underline transition-colors">
                       {t(app.name)}
-                    </a>
+                    </span>
                   </TableCell>
+                  <TableCell className="p-3">{t(app.description)}</TableCell>
                   <TableCell className="p-3">
-                    <a 
-                      href={app.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:text-primary transition-colors block w-full h-full"
-                      onClick={(e) => e.stopPropagation()}
+                    <Badge
+                      variant={app.status === "Ready" ? "default" : "secondary"}
+                      className="rounded-full"
                     >
-                      {t(app.description)}
-                    </a>
-                  </TableCell>
-                  <TableCell className="p-3">
-                    <a 
-                      href={app.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="block w-full h-full"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Badge
-                        variant={app.status === "Ready" ? "default" : "secondary"}
-                        className="rounded-full"
-                      >
-                        {t(app.status)}
-                      </Badge>
-                    </a>
+                      {t(app.status)}
+                    </Badge>
                   </TableCell>
                 </TableRow>
               ))}
@@ -247,23 +252,25 @@ export function ApplicationsTable() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
       </div>
 
-      {previewData.visible && (
-        <div 
+      {hoveredApp && (
+        <div
+          ref={previewRef}
           className="fixed z-50 w-80 bg-white dark:bg-gray-900 border rounded-lg shadow-lg p-2 transition-opacity duration-200"
           style={{
-            top: `${previewData.position.y - 200}px`,
-            left: `${previewData.position.x + 20}px`,
+            top: `${previewPosition.y - 200}px`,
+            left: `${previewPosition.x + 20}px`,
           }}
+          onMouseLeave={handlePreviewMouseLeave}
         >
           <div className="w-full h-48 bg-muted/10 rounded-md overflow-hidden">
             <img
-              src={`https://api.microlink.io?url=${encodeURIComponent(previewData.url)}&screenshot=true&meta=false&embed=screenshot.url`}
-              alt={`Preview of ${previewData.name}`}
+              src={`https://api.microlink.io?url=${encodeURIComponent(hoveredApp.url)}&screenshot=true&meta=false&embed=screenshot.url`}
+              alt={`Preview of ${hoveredApp.name}`}
               className="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
-          <p className="mt-2 text-sm font-medium text-center">{previewData.name}</p>
+          <p className="mt-2 text-sm font-medium text-center">{hoveredApp.name}</p>
         </div>
       )}
     </div>
