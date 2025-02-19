@@ -14,11 +14,11 @@ export function HeroSection() {
         <div className="flex flex-col items-center justify-center space-y-8 text-center lg:items-start lg:text-left lg:w-1/2 px-4 sm:px-6 lg:px-0">
           <div className="space-y-4 max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              {t("Your Entire Business, Powered by AI")}
+              {t("Your Entire Business AI-Powered")}
             </h1>
             <p className="mx-auto lg:mx-0 max-w-[700px] text-muted-foreground text-lg sm:text-xl md:text-2xl">
               {t(
-                "Transform your enterprise with 20+ specialized AI agents that handle everything from sales and support to analytics and automation. Join industry leaders already saving 100+ hours per week.",
+                "Boost your entire business with 20+ specialized AI agents that handles everything from sales and support to analytics, autonomous agents and automation. Join industry leaders already saving 100+ hours per week.",
               )}
             </p>
           </div>

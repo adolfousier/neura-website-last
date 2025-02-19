@@ -7,18 +7,18 @@ import { useTranslation } from "@/hooks/useTranslation"
 const features = [
   {
     title: "Handle FAQs",
-    description: "Handle any questions with NeuraCS website AI Agent.",
+    description: "Handle any questions with Neura Web, our website customer support AI Agent.",
     icon: MessageSquare,
   },
   {
-    title: "Organise Calls",
-    description: "Outreach prospects with NeuraSales, our email agent to increase your business sales conversion.",
+    title: "Generate autonomous content",
+    description: "Generate weekly digest or daily blog posts Neura ACE, our Autonomous Content Executive to deep research, improve your SEO and keep posting content regularly.",
     icon: Calendar,
   },
   {
     title: "Engage through voice and imagery",
     description:
-      "Level-up your task management with Neura Trello, Keep or Calendar with our multi-platform integrations.",
+      "Level-up your task management with Neura WhatsApp, Trello, or Calendar with our multi-platform integrations.",
     icon: Image,
   },
 ]
@@ -34,7 +34,7 @@ export function Features() {
             {t("Your ultimate AI agent Bundle")}
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg">
-            {t("Finally, an AI platform that empowers your whole organization—smarter, faster, and built for growth.")}
+            {t("Finally, an AI brand that empowers your whole organization—smarter, faster, and built for growth.")}
           </p>
         </div>
 
@@ -58,9 +58,9 @@ export function Features() {
                 )}
                 {index === 1 && (
                   <div className="grid gap-2 text-sm text-muted-foreground">
-                    <p>{t("• Automated scheduling")}</p>
-                    <p>{t("• Calendar integration")}</p>
-                    <p>{t("• Follow-up management")}</p>
+                    <p>{t("• Generate Auto Daily Content")}</p>
+                    <p>{t("• Craft Weekly Digest")}</p>
+                    <p>{t("• Execute Daily Research")}</p>
                   </div>
                 )}
                 {index === 2 && (

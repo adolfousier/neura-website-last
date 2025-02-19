@@ -17,7 +17,7 @@ const testimonials = [
     handle: "@legacisadvogados",
     content:
       "Neura AI Web Agent is saving time and providing immediate responses to our clients. It brings prestige to our lawyer office and shows our clients that we are on top of the innovation @meetneuraai.",
-    avatar: "/comments/03.jpg",
+    avatar: "/comments/08.png",
   },
   {
     name: "Sergey Klinkov",

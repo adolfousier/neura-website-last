@@ -12,10 +12,20 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Neura AI - Your Entire Business, AI-Powered!",
+  title: "Neura AI - Your Entire Business AI-Powered!",
   description:
-    "Supercharge your support and sales teams with Neura's AI-powered Agents. Handle FAQs, organize calls, and engage through voice and imagery.",
-  keywords: ["AI Agents", "Customer Support", "Sales Automation", "AI Assistant", "Neura AI"],
+    "Boost your entire business with Neura's AI-powered Agents. Handle Autonomous Content, Meetings, FAQs, organize calls, and engage through voice and imagery.",
+  keywords: ["AI Agents", "Autonomous AI", "Autonomous Agents", "Customer Support", "Sales Automation", "AI Assistant", "Neura AI"],
+  openGraph: {
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Neura AI - Your Entire Business AI-Powered!',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
