@@ -1,0 +1,22 @@
+services:
+  neurawebsite:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: neurawebsite
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "${PORT:-3000}:3000"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "7"
+        compress: "true"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.8"
+          memory: 2G
+    restart: always
