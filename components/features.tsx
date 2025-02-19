@@ -31,7 +31,7 @@ export function Features() {
       <div className="grid gap-8">
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            {t("Your ultimate AI agent Bundle")}
+            {t("Your ultimate AI agent bundle")}
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg">
             {t("Finally, an AI brand that empowers your whole organization—smarter, faster, and built for growth.")}
