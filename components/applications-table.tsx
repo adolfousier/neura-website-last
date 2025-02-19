@@ -1,11 +1,14 @@
+import { useState } from "react"
 import { TableHeader } from "@/components/ui/table"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { useTranslation } from "@/hooks/useTranslation"
 
-const applications = [
+
+
+const applications: Application[] = [
   {
-    name: "Neura AI RDA Backend",
+    name: "Neura AI RDA Bacskend",
     description:
       "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more",
     status: "Ready",
@@ -152,52 +155,117 @@ const applications = [
 
 export function ApplicationsTable() {
   const { t } = useTranslation()
+  const [previewData, setPreviewData] = useState<PreviewData>({
+    visible: false,
+    url: "",
+    name: "",
+    position: { x: 0, y: 0 }
+  })
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLTableRowElement>, app: Application) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = rect.left + window.scrollX
+    const y = rect.top + window.scrollY
+
+    setPreviewData({
+      visible: true,
+      url: app.url,
+      name: app.name,
+      position: { x, y }
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setPreviewData((prev: PreviewData) => ({ ...prev, visible: false }))
+  }
 
   return (
-    <div className="border rounded-2xl overflow-hidden shadow-sm relative scale-90">
-      <div className="overflow-y-auto max-h-[600px] applications-scrollbar">
-        <Table>
-          <TableHeader className="bg-primary sticky top-0 z-10">
-            <TableRow>
-              <TableHead className="text-primary-foreground p-3">{t("Application")}</TableHead>
-              <TableHead className="text-primary-foreground p-3">{t("Description")}</TableHead>
-              <TableHead className="text-primary-foreground p-3 w-[100px]">{t("Status")}</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {applications.map((app, index) => (
-              <TableRow
-                key={index}
-                className={`hover:bg-muted/50 transition-colors ${index % 2 === 0 ? "bg-muted/10" : ""}`}
-              >
-                <a href={app.url} target="_blank" rel="noopener noreferrer" className="contents group relative">
-                  <TableCell className="font-medium p-3">{t(app.name)}</TableCell>
-                  <TableCell className="p-3">{t(app.description)}</TableCell>
+    <div className="relative">
+      <div className="border rounded-2xl overflow-hidden shadow-sm relative scale-90">
+        <div className="overflow-y-auto max-h-[600px] applications-scrollbar">
+          <Table>
+            <TableHeader className="bg-primary sticky top-0 z-10">
+              <TableRow>
+                <TableHead className="text-primary-foreground p-3">{t("Application")}</TableHead>
+                <TableHead className="text-primary-foreground p-3">{t("Description")}</TableHead>
+                <TableHead className="text-primary-foreground p-3 w-[100px]">{t("Status")}</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {applications.map((app, index) => (
+                <TableRow
+                  key={index}
+                  onMouseEnter={(e) => handleMouseEnter(e, app)}
+                  onMouseLeave={handleMouseLeave}
+                  className={`hover:bg-muted/50 transition-colors cursor-pointer ${
+                    index % 2 === 0 ? "bg-muted/10" : ""
+                  }`}
+                >
+                  <TableCell className="font-medium p-3">
+                    <a 
+                      href={app.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors block w-full h-full"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {t(app.name)}
+                    </a>
+                  </TableCell>
                   <TableCell className="p-3">
-                    <a href={app.url} target="_blank" rel="noopener noreferrer" className="group relative block">
+                    <a 
+                      href={app.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors block w-full h-full"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {t(app.description)}
+                    </a>
+                  </TableCell>
+                  <TableCell className="p-3">
+                    <a 
+                      href={app.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <Badge
                         variant={app.status === "Ready" ? "default" : "secondary"}
-                        className="rounded-full cursor-pointer"
+                        className="rounded-full"
                       >
                         {t(app.status)}
                       </Badge>
-                      <div className="absolute z-10 w-64 p-2 bg-white border rounded shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
-                        <img
-                          src={`https://api.microlink.io?url=${encodeURIComponent(app.url)}&screenshot=true&meta=false&embed=screenshot.url`}
-                          alt={`Preview of ${app.name}`}
-                          className="w-full h-auto rounded"
-                        />
-                      </div>
                     </a>
                   </TableCell>
-                </a>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
+
+      {previewData.visible && (
+        <div 
+          className="fixed z-50 w-80 bg-white dark:bg-gray-900 border rounded-lg shadow-lg p-2 transition-opacity duration-200"
+          style={{
+            top: `${previewData.position.y - 200}px`,
+            left: `${previewData.position.x + 20}px`,
+          }}
+        >
+          <div className="w-full h-48 bg-muted/10 rounded-md overflow-hidden">
+            <img
+              src={`https://api.microlink.io?url=${encodeURIComponent(previewData.url)}&screenshot=true&meta=false&embed=screenshot.url`}
+              alt={`Preview of ${previewData.name}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p className="mt-2 text-sm font-medium text-center">{previewData.name}</p>
+        </div>
+      )}
     </div>
   )
 }
-
