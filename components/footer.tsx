@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -8,6 +9,20 @@ import { useTranslation } from "@/hooks/useTranslation"
 
 export function Footer() {
   const { t } = useTranslation()
+
+  useEffect(() => {
+    // Initialize MailerLite script
+    const script = document.createElement('script')
+    script.innerHTML = `
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '787317');
+    `
+    document.head.appendChild(script)
+  }, [])
+
 
   return (
     <footer className="border-t bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
@@ -56,10 +71,14 @@ export function Footer() {
           </div>
           <div className="space-y-4">
             <h3 className="text-sm font-bold">{t("Newsletter")}</h3>
-            <div className="space-y-2">
-              <Input type="email" placeholder={t("Enter your email")} />
-              <Button className="w-full">{t("Get onboard!")}</Button>
-            </div>
+            <form className="space-y-2">
+              <Input 
+                type="email" 
+                placeholder={t("Enter your email")} 
+                required
+              />
+              <Button type="submit" className="w-full">{t("Get onboard!")}</Button>
+            </form>
             <div className="flex space-x-4">
               <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
