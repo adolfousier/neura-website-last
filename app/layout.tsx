@@ -14,12 +14,12 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Neura AI - Your Entire Business AI-Powered!",
   description:
-    "Boost your entire business with Neura's AI-powered Agents. Handle Autonomous Content, Meetings, FAQs, organize calls, and engage through voice and imagery.",
+    "Empower your entire business with Neura's AI-powered Agents. Handle Autonomous Content, Meetings, FAQs, organize calls, and engage through voice and imagery.",
   keywords: ["AI Agents", "Autonomous AI", "Autonomous Agents", "Customer Support", "Sales Automation", "AI Assistant", "Neura AI"],
   openGraph: {
     images: [
       {
-        url: '/og.jpg',
+        url: '/og-new.jpg',
         width: 1200,
         height: 630,
         alt: 'Neura AI - Your Entire Business AI-Powered!',
