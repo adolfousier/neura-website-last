@@ -32,7 +32,7 @@ export function HeroSection() {
             </h1>
             <p className="mx-auto lg:mx-0 max-w-[700px] text-muted-foreground text-lg sm:text-xl md:text-2xl">
               {t(
-                "Boost your entire business with 20+ specialized AI agents that handles everything from sales and support to analytics, autonomous agents and automation. Join industry leaders already saving 100+ hours per week.",
+                "Empower your entire business with 20+ specialized AI agents that handles everything from sales and support to analytics, autonomous agents and automation. Join industry leaders already saving 100+ hours per week.",
               )}
             </p>
           </div>
