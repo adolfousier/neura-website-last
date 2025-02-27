@@ -8,7 +8,7 @@ import { Testimonials } from "@/components/testimonials"
 import { CaseStudies } from "@/components/case-studies"
 import { About } from "@/components/about"
 import { CTASection } from "@/components/cta-section"
-
+import { Companies } from "@/components/sections/Companies/Companies"
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen mx-auto max-w-full overflow-hidden">
@@ -18,6 +18,7 @@ export default function Home() {
         <Features />
         <Stats />
         <Testimonials />
+        <Companies />
         <CaseStudies />
         <About />
         <CTASection />
