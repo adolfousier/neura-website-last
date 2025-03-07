@@ -74,13 +74,13 @@
   </url>
   <url>
     <loc>https://artifacto.meetneura.ai/</loc>
-    <lastmod>2025-02-07</lastmod>
+    <lastmod>2025-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tkn.meetneura.ai/</loc>
-    <lastmod>2025-01-21</lastmod>
+    <loc>https://tokenizer.meetneura.ai/</loc>
+    <lastmod>2025-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
