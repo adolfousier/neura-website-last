@@ -68,7 +68,7 @@ const applications: Application[] = [
     name: "Neura FAQ Nova",
     description: "AI-powered FAQs generation from website data",
     status: "Ready",
-    url: "https://meetneura.ai",
+    url: "https://smart-data-scraper.meetneura.ai",
   },
   {
     name: "Neura Google Maps PRO",
@@ -78,9 +78,9 @@ const applications: Application[] = [
   },
   {
     name: "Neura Insight Forge",
-    description: "AI-powered agent to scrape websites and documents to markdown format",
+    description: "A powerful website scraper and documents to, raw, clear text and markdown format",
     status: "Ready",
-    url: "https://meetneura.ai",
+    url: "https://if.meetneura.ai",
   },
   {
     name: "Neura MGD",
@@ -119,7 +119,7 @@ const applications: Application[] = [
     description:
       "Our free tokenizer tool, show the token count with visual efffects to understand how tokens are counted, word and character count.",
     status: "Ready",
-    url: "https://tkn.meetneura.ai",
+    url: "https://tokenizer.meetneura.ai",
   },
   {
     name: "Neura TSB",
