@@ -15,7 +15,7 @@ interface Application {
 }
 
 const applications: Application[] = [
-  { name: "Neura AI Router Backend", description: "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more", status: "Ready", url: "https://meetneura.ai" },
+  { name: "Neura AI RDA Backend Backend", description: "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more", status: "Ready", url: "https://meetneura.ai" },
   { name: "Neura Analytics Dashboard", description: "AI-powered analysis of hot topics and weekly stats", status: "Ready", url: "https://dash.meetneura.ai" },
   { name: "Neura Artifacto UI", description: "Artifacto is our main chat interface its the ultimate middle layer for the best LLMs! Generate, Analyse, Talk, Translate and more.", status: "Ready", url: "https://artifacto.meetneura.ai" },
   { name: "Neura ACE", description: "Our Autonomous Content Executive is our AI-powered multiple agents working together to automate the content generation and SEO process for the Neura AI Blog.", status: "Ready", url: "https://ace.meetneura.ai" },
@@ -38,7 +38,9 @@ const applications: Application[] = [
   { name: "Neura Trello Oracle", description: "AI-powered Trello backend agent", status: "Ready", url: "https://meetneura.ai" },
   { name: "Neura WA Oracle", description: "AI-powered WhatsApp backend agent", status: "Ready", url: "https://meetneura.ai" },
   { name: "Neura Wiz", description: "AI-powered UI/UX designer, talk to Neura WIZ and see the magic happening", status: "Ready", url: "https://uiwiz.meetneura.ai" },
-  { name: "Neura Web", description: "AI-powered website customer support agent", status: "Ready", url: "https://meetneura.ai" }
+  { name: "Neura Web", description: "AI-powered website customer support agent", status: "Ready", url: "https://meetneura.ai" },
+  { name: "Neura BG Gone Smooth Tool", description: "Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.", status: "Ready", url: "https://meetneura.ai/bg-gone-smooth" },
+  { name: "Neura LLM Router", description: "Intelligently route your queries to the best LLM for the job. Optimize cost, speed, and accuracy with seamless multi-model orchestration.", status: "Ready", url: "https://meetneura.ai/llm-router" }
 ]
 
 const categories = [
@@ -79,11 +81,13 @@ const categories = [
   {
     title: "Dev, CX & Operations",
     filter: [
-      "Neura AI Router Backend",
+      "Neura AI RDA Backend Backend",
       "Neura MAD",
       "Neura Docker & Disk Alerts Monitor",
       "Neura ESA",
-      "Neura Web"
+      "Neura Website Agent",
+      "Neura LLM Router",
+      "Neura BG Gone Smooth Tool"
     ]
   }
 ]

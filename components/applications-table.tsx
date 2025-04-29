@@ -8,7 +8,7 @@ import { useTranslation } from "@/hooks/useTranslation"
 
 const applications: Application[] = [
   {
-    name: "Neura AI Router Backend",
+    name: "Neura AI RDA Backend Backend",
     description:
       "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more",
     status: "Ready",
@@ -157,6 +157,18 @@ const applications: Application[] = [
     description: "AI-powered website customer support agent",
     status: "Ready",
     url: "https://meetneura.ai",
+  },
+  {
+    name: "Neura BG Gone Smooth Tool",
+    description:"Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.",
+    status: "Ready",
+    url: "https://meetneura.ai" // bg-gone-smooth
+  },
+  {
+    name: "Neura LLM Router",
+    description: "Intelligently route your queries to the best LLM for the job. Optimize cost, speed, and accuracy with seamless multi-model orcestration.",
+    status: "Ready",
+    url: "https://meetneura.ai" // llm-router// 
   },
 ]
 
