@@ -15,7 +15,7 @@ interface Application {
 }
 
 const applications: Application[] = [
-  { name: "Neura AI RDA Backend Backend", description: "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more", status: "Ready", url: "https://meetneura.ai" },
+  { name: "Neura AI RDA Backend", description: "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more", status: "Ready", url: "https://meetneura.ai" },
   { name: "Neura Analytics Dashboard", description: "AI-powered analysis of hot topics and weekly stats", status: "Ready", url: "https://dash.meetneura.ai" },
   { name: "Neura Artifacto UI", description: "Artifacto is our main chat interface its the ultimate middle layer for the best LLMs! Generate, Analyse, Talk, Translate and more.", status: "Ready", url: "https://artifacto.meetneura.ai" },
   { name: "Neura ACE", description: "Our Autonomous Content Executive is our AI-powered multiple agents working together to automate the content generation and SEO process for the Neura AI Blog.", status: "Ready", url: "https://ace.meetneura.ai" },
@@ -82,7 +82,7 @@ const categories = [
   {
     title: "Dev, CX & Operations",
     filter: [
-      "Neura AI RDA Backend Backend",
+      "Neura AI RDA Backend",
       "Neura MAD",
       "Neura Docker & Disk Alerts Monitor",
       "Neura ESA",
