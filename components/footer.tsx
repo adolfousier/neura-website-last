@@ -136,7 +136,7 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
-                href="https://www.reddit.com/user/meetneuraai"
+                href="https://www.reddit.com/r/NeuraAI/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
