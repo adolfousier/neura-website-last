@@ -73,7 +73,7 @@ export default function RootLayout({
                 tooltip: {
                     showTooltip: true,
                     tooltipMessage: 'Hello 👋!',
-                    tooltipBackgroundColor: '#000514',
+                    tooltipBackgroundColor: '#002789',
                     tooltipTextColor: 'white',
                     tooltipFontSize: 16,
                 },
