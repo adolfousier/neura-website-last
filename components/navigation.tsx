@@ -9,21 +9,18 @@ import { cn } from "@/lib/utils"
 import { ModeToggle } from "@/components/mode-toggle"
 import { LanguageSelector } from "@/components/language-selector"
 import { useTranslation } from "@/hooks/useTranslation"
-import { ApplicationsTable } from "./applications-table"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Menu } from "lucide-react"
 
 const navigation = [
-  { name: "Products", href: "#products", translationKey: "Products" },
-  { name: "Use Cases", href: "#case-studies", translationKey: "Use Cases" },
-  { name: "About Neura", href: "#leadership", translationKey: "About Neura" },
+  { name: "Products", href: "/products", translationKey: "Products" }, // Changed href to /products
+  { name: "Use Cases", href: "/#case-studies", translationKey: "Use Cases" }, // Ensure homepage anchors work
+  { name: "About Neura", href: "/#leadership", translationKey: "About Neura" }, // Ensure homepage anchors work
 ]
 
 export function Navigation() {
   const pathname = usePathname()
   const { t } = useTranslation()
-  const [isProductsOpen, setIsProductsOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -38,10 +35,19 @@ export function Navigation() {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
-    const targetId = href.substring(1)
-    const targetElement = document.getElementById(targetId)
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" })
+    // Only scroll smoothly for anchor links
+    if (href.startsWith('/#')) {
+      const targetId = href.substring(2) // Remove '/#'
+      const targetElement = document.getElementById(targetId)
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" })
+      } else {
+        // If on a different page, navigate to home first then scroll
+        window.location.href = '/#' + targetId;
+      }
+    } else {
+      // For direct links like /products, let NextLink handle navigation
+      // No scrollIntoView needed here
     }
     setIsMobileMenuOpen(false)
   }
@@ -65,38 +71,26 @@ export function Navigation() {
         </Link>
 
         <nav className="hidden md:flex flex-1 justify-center items-center space-x-6 text-sm font-medium">
-          {navigation.map((item) =>
-            item.name === "Products" ? (
-              <DropdownMenu key={item.href} open={isProductsOpen} onOpenChange={setIsProductsOpen}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="link"
-                    className={cn(
-                      "transition-colors hover:text-foreground/80",
-                      pathname === item.href ? "text-foreground" : "text-foreground/60",
-                    )}
-                  >
-                    {t(item.translationKey)}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-[400px]">
-                  <ApplicationsTable />
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
-                className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname === item.href ? "text-foreground" : "text-foreground/60",
-                )}
-              >
-                {t(item.translationKey)}
-              </Link>
-            ),
-          )}
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={(e) => {
+                // Only prevent default and scroll for anchor links
+                if (item.href.startsWith('/#')) {
+                  handleScroll(e, item.href)
+                }
+                // For direct links like /products, let the Link component handle it
+              }}
+              className={cn(
+                "transition-colors hover:text-foreground/80",
+                // Highlight /products if pathname starts with /products
+                (pathname === item.href || (item.href === '/products' && pathname.startsWith('/products'))) ? "text-foreground" : "text-foreground/60",
+              )}
+            >
+              {t(item.translationKey)}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center space-x-2">
@@ -119,10 +113,19 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleScroll(e, item.href)}
+                onClick={(e) => {
+                  // Only prevent default and scroll for anchor links
+                  if (item.href.startsWith('/#')) {
+                    handleScroll(e, item.href)
+                  } else {
+                    // Close mobile menu for direct links
+                    setIsMobileMenuOpen(false)
+                  }
+                }}
                 className={cn(
                   "transition-colors hover:text-foreground/80",
-                  pathname === item.href ? "text-foreground" : "text-foreground/60",
+                  // Highlight /products if pathname starts with /products
+                  (pathname === item.href || (item.href === '/products' && pathname.startsWith('/products'))) ? "text-foreground" : "text-foreground/60",
                 )}
               >
                 {t(item.translationKey)}
