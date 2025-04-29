@@ -41,6 +41,13 @@ const applications: Application[] = [
     url: "https://meetneura.ai",
   },
   {
+    name: "Neura Brand Insider 247",
+    description:
+      "Comprehensive brand monitoring and analysis platform. Aggregates data from 100M+ sources, tracks mentions, analyzes sentiment, and provides AI-driven insights and recommendations for your brand.",
+    status: "Ready",
+    url: "https://brand-insider.meetneura.ai",
+  },
+  {
     name: "Neura Concise",
     description: "AI-powered Speech to Concise Notes, share any audio file and Neura summarize it concisely.",
     status: "Ready",

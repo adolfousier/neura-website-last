@@ -9,17 +9,42 @@ const features = [
     title: "Handle FAQs",
     description: "Handle any questions with Neura Web, our website customer support AI Agent.",
     icon: MessageSquare,
+    bullets: [
+      "24/7 automated responses",
+      "Multi-language support",
+      "Custom knowledge base"
+    ]
   },
   {
     title: "Generate autonomous content",
     description: "Generate weekly digest or daily blog posts Neura ACE, our Autonomous Content Executive to deep research, improve your SEO and keep posting content regularly.",
     icon: Calendar,
+    bullets: [
+      "Generate Auto Daily Content",
+      "Craft Weekly Digest",
+      "Execute Daily Research"
+    ]
+  },
+  {
+    title: "Brand monitoring & AI insights",
+    description: "Track your brand mentions across 100M+ sources, analyze sentiment, and get actionable AI-powered recommendations with Neura Brand Insider 247.",
+    icon: Calendar,
+    bullets: [
+      "Comprehensive dashboard overview",
+      "Real-time mention tracking",
+      "AI-powered sentiment analysis"
+    ]
   },
   {
     title: "Engage through voice and imagery",
     description:
       "Level-up your task management with Neura WhatsApp, Trello, or Calendar with our multi-platform integrations.",
     icon: Image,
+    bullets: [
+      "Voice interaction",
+      "Image recognition",
+      "Multi-modal support"
+    ]
   },
 ]
 
@@ -38,7 +63,7 @@ export function Features() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <Card key={index} className="border-2">
               <CardHeader>
@@ -46,30 +71,14 @@ export function Features() {
                   <feature.icon className="h-6 w-6" />
                 </div>
                 <CardTitle>{t(feature.title)}</CardTitle>
-                <CardDescription>{t(feature.description)}</CardDescription>
+                <CardDescription className="pt-2">{t(feature.description)}</CardDescription>
               </CardHeader>
               <CardContent>
-                {index === 0 && (
-                  <div className="grid gap-2 text-sm text-muted-foreground">
-                    <p>{t("• 24/7 automated responses")}</p>
-                    <p>{t("• Multi-language support")}</p>
-                    <p>{t("• Custom knowledge base")}</p>
-                  </div>
-                )}
-                {index === 1 && (
-                  <div className="grid gap-2 text-sm text-muted-foreground">
-                    <p>{t("• Generate Auto Daily Content")}</p>
-                    <p>{t("• Craft Weekly Digest")}</p>
-                    <p>{t("• Execute Daily Research")}</p>
-                  </div>
-                )}
-                {index === 2 && (
-                  <div className="grid gap-2 text-sm text-muted-foreground">
-                    <p>{t("• Voice interaction")}</p>
-                    <p>{t("• Image recognition")}</p>
-                    <p>{t("• Multi-modal support")}</p>
-                  </div>
-                )}
+                <div className="grid gap-2 text-sm text-muted-foreground">
+                  {feature.bullets && feature.bullets.map((bullet, i) => (
+                    <p key={i}>{t(`• ${bullet}`)}</p>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
