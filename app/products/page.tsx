@@ -39,8 +39,8 @@ const applications: Application[] = [
   { name: "Neura WA Oracle", description: "AI-powered WhatsApp backend agent", status: "Ready", url: "https://meetneura.ai" },
   { name: "Neura Wiz", description: "AI-powered UI/UX designer, talk to Neura WIZ and see the magic happening", status: "Ready", url: "https://uiwiz.meetneura.ai" },
   { name: "Neura Web", description: "AI-powered website customer support agent", status: "Ready", url: "https://meetneura.ai" },
-  { name: "Neura BG Gone Smooth Tool", description: "Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.", status: "Ready", url: "https://meetneura.ai/bg-gone-smooth" },
-  { name: "Neura LLM Router", description: "Intelligently route your queries to the best LLM for the job. Optimize cost, speed, and accuracy with seamless multi-model orchestration.", status: "Ready", url: "https://meetneura.ai/llm-router" }
+  { name: "Neura BG Gone Smooth Tool", description: "Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.", status: "Ready", url: "https://meetneura.ai" },
+  { name: "Neura LLM Router", description: "Intelligently route your queries to the best LLM for the job. Optimize cost, speed, and accuracy with seamless multi-model orchestration.", status: "Ready", url: "https://meetneura.ai" }
 ]
 
 const categories = [
