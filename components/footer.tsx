@@ -1,28 +1,33 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import Link from "next/link"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Github, Twitter } from "lucide-react"
-import { useTranslation } from "@/hooks/useTranslation"
+import { useEffect } from "react";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Github,
+  Twitter,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export function Footer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Initialize MailerLite script
-    const script = document.createElement('script')
+    const script = document.createElement("script");
     script.innerHTML = `
       (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
       .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
       n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
       (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
       ml('account', '787317');
-    `
-    document.head.appendChild(script)
-  }, [])
-
+    `;
+    document.head.appendChild(script);
+  }, []);
 
   return (
     <footer className="border-t bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
@@ -38,32 +43,43 @@ export function Footer() {
             />
             <p className="text-sm text-muted-foreground">
               {t(
-                "Deploy 20+ specialized AI agents to handle sales, support, analytics, and more. Join leaders saving 100+ hours weekly and scaling like never before.",
+                "Deploy 20+ specialized AI agents to handle sales, support, analytics, and more. Join leaders saving 100+ hours weekly and scaling like never before."
               )}
             </p>
           </div>
           <div className="space-y-4">
             <h3 className="text-sm font-bold">{t("Links")}</h3>
             <ul className="space-y-2 text-sm">
-              {[t("Docs"), t("Blog"), t("About Neura"), t("Use Cases"), t("FAQ")].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              {[t("Docs"), t("Blog"), t("About Neura"), t("Use Cases"), t("FAQ")].map(
+                (item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div className="space-y-4">
             <h3 className="text-sm font-bold">{t("Legal")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/terms"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   {t("Terms of Service")}
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-foreground">
+                <Link
+                  href="/privacy"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   {t("Privacy Policy")}
                 </Link>
               </li>
@@ -72,19 +88,63 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-bold">{t("Newsletter")}</h3>
             <form className="space-y-2">
-              <Input 
-                type="email" 
-                placeholder={t("Enter your email")} 
-                required
-              />
-              <Button type="submit" className="w-full">{t("Get onboard!")}</Button>
+              <Input type="email" placeholder={t("Enter your email")} required />
+              <Button type="submit" className="w-full">
+                {t("Get onboard!")}
+              </Button>
             </form>
             <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link
+                href="https://twitter.com/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link
+                href="https://github.com/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 <Github className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.facebook.com/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Linkedin className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.reddit.com/user/meetneuraai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <img
+                  src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png"
+                  alt="Reddit"
+                  className="h-5 w-5"
+                />
               </Link>
             </div>
           </div>
@@ -94,6 +154,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
