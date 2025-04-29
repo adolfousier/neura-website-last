@@ -11,6 +11,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { FaReddit } from "react-icons/fa";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export function Footer() {
@@ -140,11 +141,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
-                <img
-                  src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png"
-                  alt="Reddit"
-                  className="h-5 w-5"
-                />
+                <FaReddit className="h-5 w-5" />
               </Link>
             </div>
           </div>
