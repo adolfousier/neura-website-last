@@ -4,6 +4,7 @@ import React from "react"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslation } from "@/hooks/useTranslation"
+import { Navigation } from "@/components/navigation"
 
 interface Application {
   name: string
@@ -12,7 +13,6 @@ interface Application {
   url: string
 }
 
-// Data copied from applications-table.tsx
 const applications: Application[] = [
   {
     name: "Neura AI RDA Backend",
@@ -118,7 +118,7 @@ const applications: Application[] = [
   {
     name: "Neura MSN",
     description:
-      "AI-powered Memecoins Sniper Agent, have full access to real time data from the blokchain, powered by Neura Widgets",
+      "AI-powered Memecoins Sniper Agent, have full access to real time data from the blockchain, powered by Neura Widgets",
     status: "Ready",
     url: "https://meme-sniper.meetneura.ai",
   },
@@ -131,7 +131,7 @@ const applications: Application[] = [
   {
     name: "Neura TKN",
     description:
-      "Our free tokenizer tool, show the token count with visual efffects to understand how tokens are counted, word and character count.",
+      "Our free tokenizer tool, show the token count with visual effects to understand how tokens are counted, word and character count.",
     status: "Ready",
     url: "https://tokenizer.meetneura.ai",
   },
@@ -143,7 +143,7 @@ const applications: Application[] = [
   },
   {
     name: "Neura Trello Oracle",
-    description: "AI-powered trello backend agent",
+    description: "AI-powered Trello backend agent",
     status: "Ready",
     url: "https://meetneura.ai",
   },
@@ -175,43 +175,48 @@ export default function ProductsPage() {
   }
 
   return (
-    <section className="w-full max-w-[1400px] mx-auto py-12 md:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="text-center space-y-4 mb-12">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-          {t("Our Products")}
-        </h1>
-        <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-          {t("Explore the suite of AI-powered applications designed by Neura AI.")}
-        </p>
-      </div>
+    <>
+      <Navigation />
+      <section className="w-full max-w-[1400px] mx-auto py-12 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-4 mb-12">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+            {t("Our Products")}
+          </h1>
+          <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
+            {t("Explore the suite of AI-powered applications designed by Neura AI.")}
+          </p>
+        </div>
 
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {applications.map((app, index) => (
-          <Card 
-            key={index} 
-            className="flex flex-col overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 border-2"
-            onClick={() => handleCardClick(app.url)}
-          >
-            <CardHeader className="p-0">
-              <div className="w-full h-48 bg-muted/10 overflow-hidden relative">
-                <Image
-                  src={`https://api.microlink.io?url=${encodeURIComponent(app.url)}&screenshot=true&meta=false&embed=screenshot.url&overlay.browser=dark&overlay.background=transparent`}
-                  alt={`Preview of ${t(app.name)}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                  unoptimized // Added because microlink is external and might not be configured in next.config.js
-                />
-              </div>
-            </CardHeader>
-            <CardContent className="flex-grow p-4 flex flex-col">
-              <CardTitle className="mb-2 text-lg">{t(app.name)}</CardTitle>
-              <CardDescription className="text-sm flex-grow">{t(app.description)}</CardDescription>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {applications.map((app, index) => (
+            <Card
+              key={index}
+              className="flex flex-col overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 border-2"
+              onClick={() => handleCardClick(app.url)}
+            >
+              <CardHeader className="p-0">
+                <div className="w-full h-48 bg-muted/10 overflow-hidden relative">
+                  <Image
+                    src={`https://api.microlink.io?url=${encodeURIComponent(app.url)}&screenshot=true&meta=false&embed=screenshot.url&overlay.browser=dark&overlay.background=transparent`}
+                    alt={`Preview of ${t(app.name)}`}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                    unoptimized
+                  />
+                </div>
+              </CardHeader>
+              <CardContent className="flex-grow p-4 flex flex-col">
+                <CardTitle className="mb-2 text-lg">{t(app.name)}</CardTitle>
+                <CardDescription className="text-sm flex-grow">
+                  {t(app.description)}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
