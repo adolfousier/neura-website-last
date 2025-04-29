@@ -35,6 +35,12 @@ const applications: Application[] = [
     url: "https://ace.meetneura.ai",
   },
   {
+    name: "Neura BG Gone Smooth Tool",
+    description:"Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.",
+    status: "Ready",
+    url: "https://background-removal.meetneura.ai/",
+  },
+  {
     name: "Neura Bookshelf",
     description: "AI agent to generate ebooks and books",
     status: "Ready",
@@ -157,12 +163,6 @@ const applications: Application[] = [
     description: "AI-powered website customer support agent",
     status: "Ready",
     url: "https://meetneura.ai",
-  },
-  {
-    name: "Neura BG Gone Smooth Tool",
-    description:"Remove image backgrounds instantly and smoothly with AI-powered precision. Perfect for e-commerce, design, and presentations.",
-    status: "Ready",
-    url: "https://meetneura.ai" // bg-gone-smooth
   },
   {
     name: "Neura LLM Router",
