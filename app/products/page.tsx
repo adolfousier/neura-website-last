@@ -15,7 +15,7 @@ interface Application {
 
 const applications: Application[] = [
   {
-    name: "Neura AI RDA Backend",
+    name: "Neura AI Router Backend",
     description:
       "All-in-one solution to all LLM models in the market and all the best tools RDA agents, generate and analyse image or document agents, text-to-speech/speech-to-text agents, Telegram, Discord or Whatsapp Agents and more",
     status: "Ready",
