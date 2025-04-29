@@ -77,7 +77,7 @@ const categories = [
     ]
   },
   {
-    title: "Dev & Operations",
+    title: "Dev, CX & Operations",
     filter: [
       "Neura AI Router Backend",
       "Neura MAD",

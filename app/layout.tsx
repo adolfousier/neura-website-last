@@ -57,7 +57,7 @@ export default function RootLayout({
             },
             theme: {
                 button: {
-                    backgroundColor: "#001344",
+                    backgroundColor: "#002789",
                     right: 20,
                     bottom: 20,
                     size: 48,
@@ -73,7 +73,7 @@ export default function RootLayout({
                 tooltip: {
                     showTooltip: true,
                     tooltipMessage: 'Hello 👋!',
-                    tooltipBackgroundColor: '#002789',
+                    tooltipBackgroundColor: '#0034b7',
                     tooltipTextColor: 'white',
                     tooltipFontSize: 16,
                 },
