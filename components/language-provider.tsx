@@ -2,10 +2,10 @@
 
 import type React from "react"
 import { createContext, useState, useEffect, useContext } from "react"
-import en from "../locales/en.json"
-import es from "../locales/es.json"
-import pt from "../locales/pt.json"
-import fr from "../locales/fr.json"
+import en from "@/locales/en.json"
+import es from "@/locales/es.json"
+import pt from "@/locales/pt.json"
+import fr from "@/locales/fr.json"
 
 type LanguageContextType = {
   language: string
