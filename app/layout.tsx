@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: '/og-new.jpg',
+        url: '/og-new.png',
         width: 1200,
         height: 630,
         alt: 'Neura AI - Your Entire Business AI-Powered!',
